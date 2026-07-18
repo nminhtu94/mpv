@@ -166,6 +166,7 @@ sources = files(
     'options/path.c',
 
     ## Player
+    'player/ai_translate.c',
     'player/audio.c',
     'player/client.c',
     'player/command.c',

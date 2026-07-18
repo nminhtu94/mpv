@@ -440,6 +440,13 @@ typedef struct MPContext {
     int cache_buffer;
     double cache_update_pts;
 
+    // AI lookahead translator (player/ai_translate.c).
+    struct ai_translate *ai_translate;
+    bool paused_for_ai;
+    double ai_stall_start;      // wall time the current AI stall began (-1 = none)
+    double ai_last_pts;         // last playhead seen (to detect seeks)
+    char *ai_overlay_text;      // text currently shown in the OSD overlay
+
     // Set after showing warning about decoding being too slow for realtime
     // playback rate. Used to avoid showing it multiple times.
     bool drop_message_shown;

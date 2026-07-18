@@ -229,6 +229,7 @@ typedef struct MPOpts {
     struct mp_subtitle_shared_opts *subs_shared;
     struct mp_sub_filter_opts *subs_filt;
     struct mp_osd_render_opts *osd_rend;
+    struct ai_translate_opts *ai_opts;
 
     int osd_level;
     int osd_duration;

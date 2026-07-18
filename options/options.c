@@ -96,6 +96,7 @@ extern const struct m_sub_options ao_conf;
 extern const struct m_sub_options dvd_conf;
 extern const struct m_sub_options clipboard_conf;
 extern const struct m_sub_options curl_conf;
+extern const struct m_sub_options ai_translate_conf;
 
 extern const struct m_sub_options opengl_conf;
 extern const struct m_sub_options vulkan_conf;
@@ -752,6 +753,7 @@ static const m_option_t mp_opts[] = {
     {"", OPT_SUBSTRUCT(subs_shared, mp_subtitle_shared_sub_opts)},
     {"sub-filter", OPT_SUBSTRUCT(subs_filt, mp_sub_filter_opts)},
     {"", OPT_SUBSTRUCT(osd_rend, mp_osd_render_sub_opts)},
+    {"", OPT_SUBSTRUCT(ai_opts, ai_translate_conf)},
 
     {"osd-bar", OPT_BOOL(osd_bar_visible), .flags = UPDATE_OSD},
 
