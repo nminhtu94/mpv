@@ -8258,6 +8258,9 @@ void mp_option_run_callback(struct MPContext *mpctx, struct mp_option_callback *
         osd_changed(mpctx->osd);
     }
 
+    if (flags & UPDATE_AI_TRANSLATE)
+        reinit_ai_translate(mpctx);
+
     if (flags & UPDATE_BUILTIN_SCRIPTS)
         mp_load_builtin_scripts(mpctx);
 
