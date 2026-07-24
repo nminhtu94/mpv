@@ -167,6 +167,7 @@ sources = files(
 
     ## Player
     'player/ai_translate.c',
+    'player/ai_translate_chain.c',
     'player/audio.c',
     'player/client.c',
     'player/command.c',

@@ -509,6 +509,11 @@ struct mp_abort_entry {
 #define WHITE_CIRCLE "\xe2\x97\x8b"
 #define BLACK_CIRCLE "\xe2\x97\x8f"
 
+// ai_translate_chain.c
+void reinit_ai_translate(struct MPContext *mpctx);
+void uninit_ai_translate(struct MPContext *mpctx);
+void handle_ai_translate(struct MPContext *mpctx);
+
 // audio.c
 void reset_audio_state(struct MPContext *mpctx);
 void reinit_audio_chain(struct MPContext *mpctx);

@@ -33,16 +33,16 @@
 #define OPT_BASE_STRUCT struct ai_translate_opts
 const struct m_sub_options ai_translate_conf = {
     .opts = (const struct m_option[]) {
-        {"ai-translate", OPT_BOOL(enabled)},
-        {"ai-translate-lang", OPT_STRING(lang)},
-        {"ai-translate-src", OPT_STRING(src)},
-        {"ai-translate-stt-url", OPT_STRING(stt_url)},
-        {"ai-translate-tr-url", OPT_STRING(tr_url)},
-        {"ai-translate-stt-key", OPT_STRING(stt_key)},
-        {"ai-translate-model", OPT_STRING(model)},
-        {"ai-translate-translate", OPT_BOOL(translate)},
-        {"ai-translate-window", OPT_DOUBLE(window), M_RANGE(2, 15)},
-        {"ai-translate-lookahead", OPT_DOUBLE(lookahead), M_RANGE(5, 60)},
+        {"ai-translate", OPT_BOOL(enabled), .flags = UPDATE_AI_TRANSLATE},
+        {"ai-translate-lang", OPT_STRING(lang), .flags = UPDATE_AI_TRANSLATE},
+        {"ai-translate-src", OPT_STRING(src), .flags = UPDATE_AI_TRANSLATE},
+        {"ai-translate-stt-url", OPT_STRING(stt_url), .flags = UPDATE_AI_TRANSLATE},
+        {"ai-translate-tr-url", OPT_STRING(tr_url), .flags = UPDATE_AI_TRANSLATE},
+        {"ai-translate-stt-key", OPT_STRING(stt_key), .flags = UPDATE_AI_TRANSLATE},
+        {"ai-translate-model", OPT_STRING(model), .flags = UPDATE_AI_TRANSLATE},
+        {"ai-translate-translate", OPT_BOOL(translate), .flags = UPDATE_AI_TRANSLATE},
+        {"ai-translate-window", OPT_DOUBLE(window), M_RANGE(2, 15), .flags = UPDATE_AI_TRANSLATE},
+        {"ai-translate-lookahead", OPT_DOUBLE(lookahead), M_RANGE(5, 60), .flags = UPDATE_AI_TRANSLATE},
         {0}
     },
     .defaults = &(const struct ai_translate_opts) {

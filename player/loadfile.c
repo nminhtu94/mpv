@@ -55,11 +55,9 @@
 #include "demux/demux.h"
 #include "stream/stream.h"
 #include "sub/dec_sub.h"
-#include "sub/osd.h"
 #include "external_files.h"
 #include "video/out/vo.h"
 
-#include "ai_translate.h"
 #include "core.h"
 #include "command.h"
 
@@ -2038,11 +2036,7 @@ static void play_current_file(struct MPContext *mpctx)
 
     update_internal_pause_state(mpctx);
 
-    mpctx->ai_stall_start = -1;
-    mpctx->ai_last_pts = MP_NOPTS_VALUE;
-    mpctx->ai_translate = ai_translate_create(mpctx->global, mpctx->log,
-                                              mpctx->opts->ai_opts,
-                                              mpctx->filename);
+    reinit_ai_translate(mpctx);
 
     mpctx->error_playing = 0;
     mpctx->in_playloop = true;
@@ -2069,13 +2063,7 @@ terminate_playback:
 
     process_hooks(mpctx, "on_unload");
 
-    if (mpctx->ai_translate) {
-        osd_set_external_remove_owner(mpctx->osd, mpctx->ai_translate);
-        ai_translate_destroy(mpctx->ai_translate);
-        mpctx->ai_translate = NULL;
-        mpctx->paused_for_ai = false;
-        TA_FREEP(&mpctx->ai_overlay_text);
-    }
+    uninit_ai_translate(mpctx);
 
     // time to uninit all, except global stuff:
     reinit_complex_filters(mpctx, true);
